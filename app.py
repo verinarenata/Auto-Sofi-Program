@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify, send_from_directory
+from flask import Flask, request, render_template, jsonify, send_from_directory, send_file
 import os
 import tempfile
 import pandas as pd
@@ -20,12 +20,13 @@ uploaded_file_path = None
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # return render_template('index.html')
+    return send_file('index.html')
 
 # Route to serve CSS files
-@app.route('/templates/<path:path>')
-def serve_templates(path):
-    return send_from_directory('templates', path)
+# @app.route('/templates/<path:path>')
+# def serve_templates(path):
+#     return send_from_directory('templates', path)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
